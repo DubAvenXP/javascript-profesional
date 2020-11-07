@@ -23,31 +23,37 @@
     </main>
 
     <script>
-      function MediaPlayer(config) {
-        this.media = config.el;
+      const video = document.querySelector('video');
+      const button = document.querySelector('button');
+
+      // Esta funcion MediaPlayer funciona como una clase, pero es un prototype
+      function MediaPlayer(confing){
+        // this.media tendra el elemento de video almacenado
+        // .element es un atributo del objeto config
+        this.media = confing.element;
       }
 
-      MediaPlayer.prototype.play = function() {
-        this.media.play();
-      };
+      // // La clase MediaPlayer tiene un metodo llamado playAndPause
 
-      MediaPlayer.prototype.pause = function() {
-        this.media.pause();
-      };
-
-      MediaPlayer.prototype.togglePlay = function() {
+      MediaPlayer.prototype.playAndPause = function playAndPause() {
         if (this.media.paused) {
-          this.play();
+          this.media.play();
         } else {
-          this.pause();
+          this.media.pause();
         }
-      };
+      }
 
-      const video = document.querySelector('video');
-      const player = new MediaPlayer({ el: video });
 
-      const button = document.querySelector('button');
-      button.onclick = () => player.togglePlay();
+      // player es una instancia de la clase MediaPlayer
+      // por medio de destructuracion de objetos el atributo element recibira como valor video
+      const player = new MediaPlayer({element: video});
+
+      // cuando el boton es presionado se ejecuta la siguiente arrow function
+      // button.onclick = () => video.paused ? player.play() : player.pause;
+      button.onclick = () => player.playAndPause(); 
+
     </script>
+
+    
   </body>
 </html>
