@@ -1,59 +1,27 @@
 <html>
-  <head>
-    <title>PlatziMediaPlayer.js</title>
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
-    />
-    <link rel="stylesheet" href="./assets/index.css" />
-  </head>
 
-  <body>
-    <header>
-      <h1>PlatziMediaPlayer.js</h1>
-      <p>An extensible media player.</p>
-    </header>
+<head>
+  <title>PlatziMediaPlayer.js</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+  <link rel="stylesheet" href="./assets/index.css" />
+</head>
 
-    <main class="container">
-      <video class="movie">
-        <source src="./assets/BigBuckBunny.mp4" />
-      </video>
+<body>
+  <header>
+    <h1>PlatziMediaPlayer.js</h1>
+    <p>An extensible media player.</p>
+  </header>
 
-      <button>Play/Pause</button>
-    </main>
+  <main class="container">
+    <video class="movie">
+      <source src="./assets/BigBuckBunny.mp4" />
+    </video>
 
-    <script>
-      const video = document.querySelector('video');
-      const button = document.querySelector('button');
+    <button>Play/Pause</button>
+  </main>
 
-      // Esta funcion MediaPlayer funciona como una clase, pero es un prototype
-      function MediaPlayer(confing){
-        // this.media tendra el elemento de video almacenado
-        // .element es un atributo del objeto config
-        this.media = confing.element;
-      }
+  <script type="module" src="/assets/index.js" ></script>
 
-      // // La clase MediaPlayer tiene un metodo llamado playAndPause
+</body>
 
-      MediaPlayer.prototype.playAndPause = function playAndPause() {
-        if (this.media.paused) {
-          this.media.play();
-        } else {
-          this.media.pause();
-        }
-      }
-
-
-      // player es una instancia de la clase MediaPlayer
-      // por medio de destructuracion de objetos el atributo element recibira como valor video
-      const player = new MediaPlayer({element: video});
-
-      // cuando el boton es presionado se ejecuta la siguiente arrow function
-      // button.onclick = () => video.paused ? player.play() : player.pause;
-      button.onclick = () => player.playAndPause(); 
-
-    </script>
-
-    
-  </body>
-</html>
+</html> 
