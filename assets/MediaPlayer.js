@@ -12,6 +12,7 @@ function MediaPlayer(config) {
 MediaPlayer.prototype._initPlugins = function _initPlugins() {
   const player = {
     play: () => this.play(),
+    pause: () => this.pause(),
     playAndPause: () => this.playAndPause,
     media: this.media,
     set muted(value) {
@@ -31,6 +32,9 @@ MediaPlayer.prototype.mute = function mute(value){
 };
 MediaPlayer.prototype.play = function play(){
   this.media.play();
+};
+MediaPlayer.prototype.pause = function pause(){
+  this.media.pause();
 };
 
 // // La clase MediaPlayer tiene un metodo llamado playAndPause
